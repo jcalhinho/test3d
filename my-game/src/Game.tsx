@@ -46,7 +46,10 @@ interface PlatformData {
     return (
       <mesh ref={ref} position={position} receiveShadow>
         <boxGeometry args={size} />
-        <meshStandardMaterial color={isMobile ? 'orange' : 'green'} />
+        <meshStandardMaterial color={
+            //isMobile ? 'orange' : 
+            'green'
+            } />
       </mesh>
     );
   });
@@ -107,7 +110,7 @@ interface PlatformData {
     );
   };
   
-  const generatePlatforms = (numPlatforms: number, minHeight: number, maxHeight: number, mobileRatio = 0.3): PlatformData[] => {
+  const generatePlatforms = (numPlatforms: number, minHeight: number, maxHeight: number, mobileRatio = 0.6): PlatformData[] => {
     const platforms: PlatformData[] = [];
     for (let i = 0; i < numPlatforms; i++) {
       const size: [number, number, number] = [Math.random() * 5 + 1, 0.5, Math.random() * 5 + 1];
@@ -221,7 +224,7 @@ interface PlatformData {
     const [moveZ, setMoveZ] = useState(0);
     const MOVE_SPEED = 0.2;
   
-    const platforms = useMemo(() => generatePlatforms(1000, 0, 1800), []);
+    const platforms = useMemo(() => generatePlatforms(2000, 1,1800), []);
     const platformRefs = useMemo(() => platforms.map(() => React.createRef<THREE.Mesh>()), [platforms]);
   
     const handleKeyDown = (event: KeyboardEvent) => {

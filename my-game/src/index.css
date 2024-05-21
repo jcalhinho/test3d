@@ -34,6 +34,19 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+.controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 button {
   border-radius: 8px;

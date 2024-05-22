@@ -1,9 +1,9 @@
+
 import React, { useRef, useState, useEffect } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useLoader } from '@react-three/fiber';
 import { a, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
-
-
+import { GLTFLoader } from 'three-stdlib';
 
 interface FlyingSquirrelProps {
   moveX: number;
@@ -21,6 +21,9 @@ const FlyingSquirrel: React.FC<FlyingSquirrelProps> = ({ moveX, moveZ, platforms
   const REBOUND_DAMPING = 0.5;
   const BOUNDARY = 50;
   const AIR_RESISTANCE = 0.99;
+
+  const fileUrl = "/sans_nom.gltf";
+  const gltf = useLoader(GLTFLoader, fileUrl);
 
   const { positionY } = useSpring({
     positionY: isPaused ? 2000 : squirrelRef.current?.position.y ?? 2000,
@@ -51,7 +54,7 @@ const FlyingSquirrel: React.FC<FlyingSquirrelProps> = ({ moveX, moveZ, platforms
       squirrelRef.current.position.x += moveX * delta * 1000;
       squirrelRef.current.position.z += moveZ * delta * 1000;
 
-      const cameraDistance = 25;
+      const cameraDistance = 40;
       state.camera.position.set(
         squirrelRef.current.position.x,
         squirrelRef.current.position.y + cameraDistance,
@@ -97,18 +100,22 @@ const FlyingSquirrel: React.FC<FlyingSquirrelProps> = ({ moveX, moveZ, platforms
       // Animation de déformation du carré pour imiter un parachute
       const time = state.clock.getElapsedTime();
       const geometry = squirrelRef.current.geometry;
-      const position = geometry.attributes.position;
-      const waveAmplitude = 0.1;
-      const waveFrequency = 2;
+      if (geometry) {
+        const position = geometry.attributes.position;
+        if (position) {
+          const waveAmplitude = 0.1;
+          const waveFrequency = 2;
 
-      for (let i = 0; i < position.count; i++) {
-        const x = position.getX(i);
-        const y = position.getY(i);
-        const distanceFromCenter = Math.sqrt(x * x + y * y);
-        const offset = Math.sin(time * waveFrequency + distanceFromCenter * 3) * waveAmplitude;
-        position.setZ(i, offset);
+          for (let i = 0; i < position.count; i++) {
+            const x = position.getX(i);
+            const y = position.getY(i);
+            const distanceFromCenter = Math.sqrt(x * x + y * y);
+            const offset = Math.sin(time * waveFrequency + distanceFromCenter * 3) * waveAmplitude;
+            position.setZ(i, offset);
+          }
+          position.needsUpdate = true;
+        }
       }
-      position.needsUpdate = true;
 
       // Assurez-vous que le plan reste horizontal
       squirrelRef.current.rotation.set(-Math.PI / 2, 0, 0);
@@ -133,11 +140,8 @@ const FlyingSquirrel: React.FC<FlyingSquirrelProps> = ({ moveX, moveZ, platforms
 
   return (
     <a.mesh ref={squirrelRef} position-y={positionY} castShadow>
-      <planeGeometry args={[2, 2, 10, 10]} />
-      <meshStandardMaterial color="violet" side={THREE.DoubleSide} />
-   
+      <primitive object={gltf.scene} />
     </a.mesh>
-    
   );
 };
 

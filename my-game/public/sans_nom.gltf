@@ -17,10 +17,10 @@
 			"mesh":0,
 			"name":"Sph\u00e8re.001",
 			"rotation":[
-				-0.012675796635448933,
-				0.8340343236923218,
-				-0.0014875777997076511,
-				0.5515649914741516
+				0.004011404700577259,
+				-0.7083192467689514,
+				-0.012115993537008762,
+				0.7057768702507019
 			],
 			"scale":[
 				0.7282861471176147,
@@ -28,9 +28,9 @@
 				1
 			],
 			"translation":[
-				-2.1844544410705566,
-				0.24378764629364014,
-				1.343131184577942
+				-0.0425252802670002,
+				0.021684885025024414,
+				-0.24813973903656006
 			]
 		}
 	],
@@ -70,7 +70,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":20096,
+			"count":5720,
 			"max":[
 				4.6096086502075195,
 				2.476875066757202,
@@ -86,13 +86,13 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":20096,
+			"count":5720,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":20096,
+			"count":5720,
 			"type":"VEC2"
 		},
 		{
@@ -105,32 +105,32 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":241152,
+			"byteLength":68640,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":241152,
-			"byteOffset":241152,
+			"byteLength":68640,
+			"byteOffset":68640,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":160768,
-			"byteOffset":482304,
+			"byteLength":45760,
+			"byteOffset":137280,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":58344,
-			"byteOffset":643072,
+			"byteOffset":183040,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":701416,
+			"byteLength":241384,
 			"uri":"sans_nom.bin"
 		}
 	]

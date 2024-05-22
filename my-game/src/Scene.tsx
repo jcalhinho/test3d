@@ -8,11 +8,11 @@ import FlyingSquirrel from './FlyingSquirrel';
 import generatePlatforms from './utils/generatePlatforms';
 import * as THREE from 'three';
 import './index.css'; // Assurez-vous d'avoir un fichier CSS pour styler les boutons
-const Box = () => {
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: 'orange' });
-  return <primitive object={new THREE.Mesh(geometry, material)} />;
-};
+// const Box = () => {
+//   const geometry = new THREE.BoxGeometry(1, 1, 1);
+//   const material = new THREE.MeshBasicMaterial({ color: 'orange' });
+//   return <primitive object={new THREE.Mesh(geometry, material)} />;
+// };
 const Scene: React.FC = () => {
   const [moveX, setMoveX] = useState(0);
   const [moveZ, setMoveZ] = useState(0);
@@ -110,7 +110,7 @@ const Scene: React.FC = () => {
           />
         ))}
         <FlyingSquirrel moveX={moveX} moveZ={moveZ} platforms={platformRefs} isPaused={isPaused} />
-       
+      
       </Canvas>
      
       <div className="controls">

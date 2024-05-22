@@ -3,6 +3,8 @@ import { useFrame } from '@react-three/fiber';
 import { a, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
 
+
+
 interface FlyingSquirrelProps {
   moveX: number;
   moveZ: number;
@@ -133,7 +135,9 @@ const FlyingSquirrel: React.FC<FlyingSquirrelProps> = ({ moveX, moveZ, platforms
     <a.mesh ref={squirrelRef} position-y={positionY} castShadow>
       <planeGeometry args={[2, 2, 10, 10]} />
       <meshStandardMaterial color="violet" side={THREE.DoubleSide} />
+   
     </a.mesh>
+    
   );
 };
 
